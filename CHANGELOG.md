@@ -1,0 +1,1 @@
+* Initial Support for Rails 3.2.x
