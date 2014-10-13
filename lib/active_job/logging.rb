@@ -40,7 +40,6 @@ module ActiveJob
       def tag_logger(*tags)
         if logger.respond_to?(:tagged)
           tags.unshift "ActiveJob" unless logger_tagged_by_active_job?
-          raise "#{tags.inspect}"
           ActiveJob::Base.logger.tagged(*tags){ yield }
         else
           yield
@@ -48,7 +47,7 @@ module ActiveJob
       end
 
       def logger_tagged_by_active_job?
-        logger.formatter.current_tags.include?("ActiveJob")
+        logger.send(:current_tags).include?("ActiveJob")
       end
 
     class LogSubscriber < ActiveSupport::LogSubscriber

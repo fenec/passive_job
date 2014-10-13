@@ -5,7 +5,7 @@ require 'models/person'
 require 'active_support/core_ext/object/inclusion'
 
 class RescueTest < ActiveSupport::TestCase
-  setup do
+  def setup
     JobBuffer.clear
   end
 
