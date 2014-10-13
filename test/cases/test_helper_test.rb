@@ -6,7 +6,9 @@ require 'jobs/logging_job'
 require 'jobs/nested_job'
 
 class EnqueuedJobsTest < ActiveJob::TestCase
-  setup { queue_adapter.perform_enqueued_at_jobs = true }
+  def setup
+    queue_adapter.perform_enqueued_at_jobs = true
+  end
 
   def test_assert_enqueued_jobs
     assert_nothing_raised do
@@ -114,7 +116,9 @@ class EnqueuedJobsTest < ActiveJob::TestCase
 end
 
 class PerformedJobsTest < ActiveJob::TestCase
-  setup { queue_adapter.perform_enqueued_jobs = true }
+  def setup
+    queue_adapter.perform_enqueued_jobs = true
+  end
 
   def test_assert_performed_jobs
     assert_nothing_raised do
