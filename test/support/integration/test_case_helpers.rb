@@ -7,7 +7,7 @@ module TestCaseHelpers
   included do
     self.use_transactional_fixtures = false
 
-    setup do
+    def setup
       clear_jobs
       @id = "AJ-#{SecureRandom.uuid}"
     end

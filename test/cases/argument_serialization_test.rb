@@ -4,7 +4,7 @@ require 'models/person'
 require 'active_support/core_ext/hash/indifferent_access'
 
 class ArgumentSerializationTest < ActiveSupport::TestCase
-  setup do
+  def setup
     @person = Person.find('5')
   end
 

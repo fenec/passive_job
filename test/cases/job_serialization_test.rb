@@ -3,7 +3,7 @@ require 'jobs/gid_job'
 require 'models/person'
 
 class JobSerializationTest < ActiveSupport::TestCase
-  setup do
+  def setup
     JobBuffer.clear
     @person = Person.find(5)
   end

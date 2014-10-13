@@ -4,7 +4,7 @@ require 'active_support/core_ext/numeric/time'
 
 
 class QueuingTest < ActiveSupport::TestCase
-  setup do
+  def setup
     JobBuffer.clear
   end
 
