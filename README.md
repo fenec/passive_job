@@ -28,6 +28,10 @@ See [how to use Active Job](http://edgeguides.rubyonrails.org/active_job_basics.
 bundle exec rake test
 ```
 
+## What does not work?
+
+GlobalID is not tied to Rails yet, need works
+
 ## Contribution
 
 We welcome any contributions small or large, please file PR :)
