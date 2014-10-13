@@ -1,13 +1,16 @@
 module ActiveJob
   module QueueAdapters
     class TestAdapter
-      delegate :name, to: :class
       attr_accessor(:perform_enqueued_jobs, :perform_enqueued_at_jobs)
       attr_writer(:enqueued_jobs, :performed_jobs)
 
       # Provides a store of all the enqueued jobs with the TestAdapter so you can check them.
       def enqueued_jobs
         @enqueued_jobs ||= []
+      end
+
+      def name
+        self.class.name
       end
 
       # Provides a store of all the performed jobs with the TestAdapter so you can check them.
