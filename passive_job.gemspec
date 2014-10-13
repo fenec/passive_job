@@ -24,5 +24,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'activesupport', '~> 3.2', '>= 3.2.0'
 
   s.add_development_dependency 'bundler', '~> 1.6'
-  s.add_development_dependency 'rake', '~> 0'
+  s.add_development_dependency 'rake', '~> 10.3', '>= 10.3.2'
 end
