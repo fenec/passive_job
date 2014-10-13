@@ -9,36 +9,18 @@ module ActiveJob
     included do
       cattr_accessor(:logger) { ActiveSupport::TaggedLogging.new(ActiveSupport::BufferedLogger.new(STDOUT)) }
 
-      if ActiveSupport::VERSION::MINOR > 0
-        around_enqueue do |_, block, _|
-          tag_logger do
-            block.call
-          end
+      around_enqueue do |_, block|
+        tag_logger do
+          block.call
         end
+      end
 
-        around_perform do |job, block, _|
-          tag_logger(job.class.name, job.job_id) do
-            payload = {adapter: job.class.queue_adapter, job: job}
-            ActiveSupport::Notifications.instrument("perform_start.active_job", payload.dup)
-            ActiveSupport::Notifications.instrument("perform.active_job", payload) do
-              block.call
-            end
-          end
-        end
-      else
-        around_enqueue do |_, block|
-          tag_logger do
+      around_perform do |job, block|
+        tag_logger(job.class.name, job.job_id) do
+          payload = {adapter: job.class.queue_adapter, job: job}
+          ActiveSupport::Notifications.instrument("perform_start.active_job", payload.dup)
+          ActiveSupport::Notifications.instrument("perform.active_job", payload) do
             block.call
-          end
-        end
-
-        around_perform do |job, block|
-          tag_logger(job.class.name, job.job_id) do
-            payload = {adapter: job.class.queue_adapter, job: job}
-            ActiveSupport::Notifications.instrument("perform_start.active_job", payload.dup)
-            ActiveSupport::Notifications.instrument("perform.active_job", payload) do
-              block.call
-            end
           end
         end
       end
@@ -58,6 +40,7 @@ module ActiveJob
       def tag_logger(*tags)
         if logger.respond_to?(:tagged)
           tags.unshift "ActiveJob" unless logger_tagged_by_active_job?
+          raise "#{tags.inspect}"
           ActiveJob::Base.logger.tagged(*tags){ yield }
         else
           yield
