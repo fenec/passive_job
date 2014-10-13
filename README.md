@@ -4,6 +4,8 @@
 
 Passive Job is a backport of Rails 4.2's Active Job to Rails 3.2
 
+## Install
+
 ```ruby
 gem 'passive_job'
 ```
@@ -16,4 +18,16 @@ ActiveJob::Base.queue_adapter = :inline # default queue adapter
 #                               :resque, :sidekiq, :sneakers, :sucker_punch
 ```
 
+## How to use?
+
 See [how to use Active Job](http://edgeguides.rubyonrails.org/active_job_basics.html) and the [official repo](https://github.com/rails/rails/tree/master/activejob)
+
+## Testing
+
+```
+bundle exec rake test
+```
+
+## Contribution
+
+We welcome any contributions small or large, please file PR :)
