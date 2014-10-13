@@ -33,7 +33,7 @@ ActiveJob::Base.logger.level = Logger::DEBUG
 if !Date.respond_to?(:noon)
   class Date
     def noon
-      in_time_zone.change(:hour => 12)
+      to_time_in_current_zone.change(:hour => 12)
     end
   end
 end
