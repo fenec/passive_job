@@ -25,14 +25,14 @@ module ActiveJob
       class_attribute :queue_name, instance_accessor: false
       self.default_queue_name = "default"
       self.queue_name = default_queue_name
-    end
 
-    # Returns the name of the queue the job will be run on
-    def queue_name
-      if @queue_name.is_a?(Proc)
-        @queue_name = self.class.queue_name_from_part(instance_exec(&@queue_name))
+      # Returns the name of the queue the job will be run on
+      def queue_name
+        if @queue_name.is_a?(Proc)
+          @queue_name = self.class.queue_name_from_part(instance_exec(&@queue_name))
+        end
+        @queue_name
       end
-      @queue_name
     end
 
   end
