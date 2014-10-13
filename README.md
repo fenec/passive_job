@@ -35,3 +35,7 @@ GlobalID is not tied to Rails yet, need works
 ## Contribution
 
 We welcome any contributions small or large, please file PR :)
+
+## Credits
+
+Lots of works are based on the 4.x backport version of Andrew Kane's [activejob_backport](https://github.com/ankane/activejob_backport).
