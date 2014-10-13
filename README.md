@@ -7,7 +7,7 @@ Passive Job is a backport of Rails 4.2's Active Job to Rails 3.2
 ## Install
 
 ```ruby
-gem 'passive_job'
+gem 'passive_job', require: 'active_job'
 ```
 
 And create `config/initializers/active_job.rb` with:
