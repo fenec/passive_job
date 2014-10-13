@@ -28,11 +28,6 @@ See [how to use Active Job](http://edgeguides.rubyonrails.org/active_job_basics.
 bundle exec rake test
 ```
 
-## TODO
-
-Support GlobalID - need to get rails/globalid backported firstly
-
-
 ## Contribution
 
 We welcome any contributions small or large, please file PR :)
