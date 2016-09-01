@@ -79,6 +79,10 @@ module ActiveJob
         end
       end
 
+      def logger
+        ActiveJob::Base.logger
+      end
+
       private
         def queue_name(event)
           event.payload[:adapter].name.demodulize.gsub('Adapter', '') + "(#{event.payload[:job].queue_name})"
@@ -90,10 +94,6 @@ module ActiveJob
 
         def scheduled_at(event)
           Time.at(event.payload[:job].scheduled_at).utc
-        end
-
-        def logger
-          ActiveJob::Base.logger
         end
     end
   end
